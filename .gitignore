@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Config and personal files
+app_config.json
+last_proxies.json
+3proxy.cfg
+
+# Tool generated txt files
+tool_del_ips.txt
+add_ips.txt
+exported_proxies.txt
+
+# Batch scripts
+*.bat
+
+# Build artifacts
+build/
+dist/
+*.spec
+*.exe
+*.zip
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
