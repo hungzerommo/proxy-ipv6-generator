@@ -1,0 +1,267 @@
+<!-- Creator     : groff version 1.22.4 -->
+<html>
+<head>
+
+</head>
+<body>
+
+<h1 align="center">tlspr</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#CLIENTS">CLIENTS</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>tlspr</b> -
+SNI proxy gateway service</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>tlspr</b>
+[<b>-d</b>][<b>-a</b>] [<b>-l</b>[[<i>@</i>]<i>logfile</i>]]
+[<b>-p</b><i>listening_port</i>]
+[<b>-P</b><i>destination_port</i>]
+[<b>-c</b><i>tls_check_level</i>]
+[<b>-i</b><i>internal_ip</i>]
+[<b>-e</b><i>external_ip</i>]</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>proxy</b> is
+SNI gateway service (destination host is taken from TLS
+handshake). Destination port must be specified via -P option
+(or it may be detected with Transparent plugin).</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p style="margin-top: 1em"><b>-I</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Inetd mode. Standalone service
+only.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-d</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Daemonise. Detach service from console and run in the
+background.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-t</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Be silenT. Do not log start/stop/accept error
+records.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-u</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Never ask for username authentication</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-e</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>External address. IP address of interface proxy should
+initiate connections from. By default system will deside
+which address to use in accordance with routing table.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-i</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Internal address. IP address proxy accepts connections
+to. By default connection to any interface is accepted.
+It&acute;s usually unsafe.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-a</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Anonymous. Hide information about client.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-a1</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Anonymous. Show fake information about client.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-p</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>listening_port. Port proxy listens for incoming
+connections. Default is 1443.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-P</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>destination_port. Port to establish outgoing
+connections. One is required unless Transparent plugin is
+not used because TLS handshake does not contain port
+information. Default is 443.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-c</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>TLS_CHECK_LEVEL. 0 (default) - allow non-TLS traffic to
+pass, 1 - require TLS, only check client HELLO packet, 2 -
+require TLS, check both client and server HELLO, 3 - require
+TLS, check server send certificate (not compatible with TLS
+1.3), 4 - require mutual TLS, check server send certificate
+request and client sends certificate (not compatible with
+TLS 1.3)</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-l</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Log. By default logging is to stdout. If <i>logfile</i>
+is specified logging is to file. Under Unix, if
+&acute;<i>@</i>&acute; preceeds <i>logfile</i>, syslog is
+used for logging.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>-S</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Increase or decrease stack size. You may want to try
+something like -S8192 if you experience 3proxy crashes.</p></td></tr>
+</table>
+
+<h2>CLIENTS
+<a name="CLIENTS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">You should use
+client with HTTP proxy support or configure router to
+redirect HTTP traffic to proxy (transparent proxy).
+Configure client to connect to <i>internal_ip</i> and
+<i>port</i>. HTTPS support allows to use almost any TCP
+based protocol. If you need to limit clients, use
+<b>3proxy</b>(8) instead.</p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Report all bugs
+to <b>3proxy@3proxy.org</b></p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">3proxy(8),
+ftppr(8), proxy(8), socks(8), pop3p(8), smtpp(8), tcppm(8),
+udppm(8), syslogd(8), <br>
+https://3proxy.org/</p>
+
+<h2>AUTHORS
+<a name="AUTHORS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">3proxy is
+designed by Vladimir 3APA3A Dubrovin
+(<i>3proxy@3proxy.org</i>)</p>
+<hr>
+</body>
+</html>

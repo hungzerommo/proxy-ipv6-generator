@@ -1,0 +1,228 @@
+<!-- Creator     : groff version 1.22.4 -->
+<html>
+<head>
+
+</head>
+<body>
+
+<h1 align="center">smtpp</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#CLIENTS">CLIENTS</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>smtpp</b> -
+SMTP proxy gateway service</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>smtpp</b>
+[<b>-d</b>] [<b>-l</b>[[<i>@</i>]<i>logfile</i>]]
+[<b>-p</b><i>port</i>] [<b>-i</b><i>internal_ip</i>]
+[<b>-e</b><i>external_ip</i>]
+[<b>-h</b><i>default_ip[:port]</i>]</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>smtpp</b> is
+SMTP gateway service to allow internal users to access
+external SMTP servers.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><b>-I</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Inetd mode. Standalone service
+only.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-d</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Daemonise. Detach service from console and run in the
+background.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-t</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Be silenT. Do not log start/stop/accept error
+records.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-u</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Never look for username authentication.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-e</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>External address. IP address of interface proxy should
+initiate connections from. By default system will deside
+which address to use in accordance with routing table.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-i</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Internal address. IP address proxy accepts connections
+to. By default connection to any interface is accepted.
+It&acute;s usually unsafe.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-p</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Port. Port proxy listens for incoming connections.
+Default is 25.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-h</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Default destination. It&rsquo;s used if targed address
+is not specified by user.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-l</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Log. By default logging is to stdout. If <i>logfile</i>
+is specified logging is to file. Under Unix, if
+&acute;<i>@</i>&acute; preceeds <i>logfile</i>, syslog is
+used for logging.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><b>-S</b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Increase or decrease stack size. You may want to try
+something like -S8192 if you experience 3proxy crashes.</p></td></tr>
+</table>
+
+<h2>CLIENTS
+<a name="CLIENTS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">You can use any
+MUA (Mail User Agent) with SMTP authentication support. Set
+client to use <i>internal_ip</i> and <i>port</i> as a SMTP
+server. Address of real SMTP server must be configured as a
+part of SMTP username. Format for username is
+<i>username</i><b>@</b><i>server</i>, where <i>server</i> is
+address of SMTP server and <i>username</i> is user&acute;s
+login on this SMTP server. Login itself may contain
+&acute;@&acute; sign. Only cleartext authentication is
+supported, because challenge-response authentication
+(CRAM-MD5, SPA, etc) requires challenge from server before
+we know which server to connect.</p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Report all bugs
+to <b>3proxy@3proxy.org</b></p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">3proxy(8),
+ftppr(8), proxy(8), socks(8), tcppm(8), udppm(8),
+syslogd(8), <br>
+https://3proxy.org/</p>
+
+<h2>AUTHORS
+<a name="AUTHORS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">3proxy is
+designed by Vladimir 3APA3A Dubrovin
+(<i>3proxy@3proxy.org</i>)</p>
+<hr>
+</body>
+</html>
