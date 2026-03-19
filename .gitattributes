@@ -1,1 +1,3 @@
-3proxy/** linguist-vendored
+3proxy/** linguist-vendored=true
+*.rtf linguist-detectable=false
+*.html linguist-detectable=false
